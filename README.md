@@ -12,3 +12,5 @@ highschool so you can imagine what we thought was funny lol.
 ### NOTICE:
 
 This was before either of us either learned or cared enough about proper comment organization... so it's kind of spaghetti... but it's nice to look back at these things and learn!
+
+Also, you'll need FFmpeg binaries for youtube functionality :)
