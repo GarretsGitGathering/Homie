@@ -31,8 +31,6 @@ keyword_processor.add_keyword("don't")
 keyword_processor.add_keyword("do not")
 keyword_processor.add_keyword("say")
 keyword_processor.add_keyword("weather")
-keyword_processor.add_keyword("pee pee")
-keyword_processor.add_keyword("PP")
 keyword_processor.add_keyword("kazoo")
 keyword_processor.add_keyword("how are you")
 keyword_processor.add_keyword("grade")
@@ -144,8 +142,6 @@ def handleKeyword(keyword, text):
             say("404 error while getting the current weather")
     
     ### SAYS RANDOM FUNNY THINGS WE WANT IT TO ###
-    if keyword == "pee pee" or keyword == "PP":
-        say("your mom")
     if keyword == "kazoo":
         say("You should probably turn down your volume lol")
         say("Like actually, you really need to turn your volume down a lot")
