@@ -42,13 +42,13 @@ keyword_processor.add_keyword("time")
 keyword_processor.add_keyword("date")
 
 # openweathermap stuff
-weather_api_key = "65551e1d386353331c45bc370a6b5dde"
+weather_api_key = "*api_key_string"
 
 # base_url variable to store url
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
 
 # city name
-city_name = "Temecula"
+city_name = "city_name"
 
 # complete url address
 complete_url = base_url + "appid=" + weather_api_key + "&q=" + city_name
@@ -57,7 +57,7 @@ response = requests.get(complete_url)
 
 # Creates an instance of a speech config with specified subscription key and service region.
 # Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
-speech_key, service_region = "0cf065d50a4e45ffbbd9dc7aaeff2ea5", "westus"
+speech_key, service_region = "*api_key_string", "region"
 speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
 
 # Creates a recognizer with the given settings
@@ -76,7 +76,7 @@ def stop_cb(evt):
     #print('CLOSING on {}'.format(evt))
     done = True
 
-# calls various functions based on what keyword was said
+#### HANDLE KEYWORDS ###
 def handleKeyword(keyword, text):
     if text != "":
         print("Handling keyword", keyword, "using", text)
@@ -153,8 +153,6 @@ def handleKeyword(keyword, text):
         say("I warned you!!")
     if keyword == "how are you":
         playYouTubeUrl("https://www.youtube.com/watch?v=77sS5IuR0Gs")
-    if keyword == "I love you":
-        playYouTubeUrl("https://www.youtube.com/watch?v=PVrYhL-jv-c")
 
 ### YOUTUBE SEARCH PART OF CODE ###
 # the configuration for youtube_dl
@@ -182,6 +180,7 @@ def playYouTube(search): # plays the youtube video with search data after being 
             print(url)
             break # break out of the loop, i didn't know how to just get one url in a way that would work, so yeah this isn't really a loop anymore
 
+    # download the video as a wav file
     with youtube_dl.YoutubeDL(options) as ydl:
         ydl.download([url])
 
@@ -229,7 +228,8 @@ def say(text):
 speech_recognizer.recognized.connect(recognized)
 speech_recognizer.session_stopped.connect(stop_cb)
 speech_recognizer.canceled.connect(stop_cb)
-# Start continuous speech recognition
+
+### START CONTINUOUS SPEECH RECOGNITION ###
 speech_recognizer.start_continuous_recognition()
 while not done:
     time.sleep(.5)
